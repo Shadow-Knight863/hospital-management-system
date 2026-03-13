@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available Doctor Slots</h2>
+
+{% for slot in slots %}
+
+<div class="card">
+
+<h3>Dr. {{ slot.doctor }}</h3>
+
+<p>
+📅 Date: {{ slot.date }} <br>
+⏰ Time: {{ slot.start_time }} - {{ slot.end_time }}
+</p>
+
+{% if not slot.is_booked %}
+
+<a class="btn" href="/book/{{slot.id}}/">Book Appointment</a>
+
+{% else %}
+
+<strong style="color:red;">Booked</strong>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

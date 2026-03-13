@@ -1,0 +1,20 @@
+<h2>Patient Registration</h2>
+
+<form method="post">
+{% csrf_token %}
+
+Username:<br>
+<input type="text" name="username"><br><br>
+
+Email:<br>
+<input type="email" name="email"><br><br>
+
+Password:<br>
+<input type="password" name="password"><br><br>
+
+<button type="submit">Register</button>
+
+</form>
+
+<br>
+<a href="/login/">Already have an account? Login</a>

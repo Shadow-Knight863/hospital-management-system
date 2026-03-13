@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Hospital Management System</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+.navbar{
+background:#2c3e50;
+color:white;
+padding:15px;
+font-size:20px;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn{
+background:#3498db;
+color:white;
+padding:8px 12px;
+text-decoration:none;
+border-radius:5px;
+}
+
+.btn:hover{
+background:#2980b9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+🏥 Hospital Management System
+<a href="/logout/" style="float:right;color:white;">Logout</a>
+</div>
+
+<div class="container">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+</html>

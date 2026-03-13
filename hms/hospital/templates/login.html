@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Login</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+}
+
+.login-box{
+width:300px;
+margin:120px auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+input{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+}
+
+button{
+background:#3498db;
+color:white;
+border:none;
+padding:10px;
+width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2>Patient Login</h2>
+
+<form method="post">
+
+{% csrf_token %}
+
+<input type="text" name="username" placeholder="Username">
+
+<input type="password" name="password" placeholder="Password">
+
+<button type="submit">Login</button>
+
+</form>
+
+<br>
+<p>New user? <a href="/register/">Register here</a></p>
+
+</div>
+
+</body>
+
+</html>
