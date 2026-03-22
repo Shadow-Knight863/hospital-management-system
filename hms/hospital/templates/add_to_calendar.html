@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add to Calendar</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #f0f0f0;
+            padding-top: 100px;
+        }
+
+        a {
+            background: #4285F4;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Appointment Booked Successfully</h2>
+
+    <p>Add this appointment to your Google Calendar:</p>
+
+    <a href="{{ calendar_url }}" target="_blank">
+        Add to Google Calendar
+    </a>
+
+    <br><br>
+
+    <a href="/" style="background: green;">Go Back Home</a>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .slot-card {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .booked {
+            color: red;
+        }
+
+        .available {
+            color: green;
+        }
+
+        .delete-btn {
+            color: white;
+            background: red;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Doctor Dashboard</h2>
+
+    <div class="card">
+        <h3>Add Slot</h3>
+        <form method="POST" action="/add-slot/">
+            {% csrf_token %}
+            <input type="date" name="date" required>
+            <input type="time" name="start_time" required>
+            <input type="time" name="end_time" required>
+            <button type="submit">Add Slot</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Your Slots</h3>
+
+        {% for slot in slots %}
+            <div class="slot-card">
+                <p><strong>{{ slot.date }}</strong> | {{ slot.start_time }} - {{ slot.end_time }}</p>
+
+                {% if slot.is_booked %}
+                    <p class="booked">
+                        Booked by:
+                        {% if slot.booked_by %}
+                            {{ slot.booked_by.username }}
+                        {% else %}
+                            Unknown
+                        {% endif %}
+                    </p>
+                {% else %}
+                    <p class="available">Available</p>
+                {% endif %}
+
+                <br>
+                <a class="delete-btn" href="/delete-slot/{{ slot.id }}/">Delete</a>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

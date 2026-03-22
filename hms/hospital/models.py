@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Doctor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     specialization = models.CharField(max_length=100)
@@ -22,6 +23,9 @@ class Availability(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     is_booked = models.BooleanField(default=False)
+
+    # ✅ NEW FIELD (IMPORTANT)
+    booked_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"{self.doctor} {self.date} {self.start_time}"
